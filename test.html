@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Soft Body Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+        .controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="startButton">Start</button>
+        <button id="resetButton">Reset</button>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const width = 600;
+        const height = 400;
+        canvas.width = width;
+        canvas.height = height;
+
+        // Initialize balloon properties
+        let balloon = { x: width / 2, y: height / 2, radius: 50, growing: true };
+
+        // Function to draw the balloon
+        function drawBalloon() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.beginPath();
+            ctx.arc(balloon.x, balloon.y, balloon.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // Function to update the balloon's size
+        function updateBalloon() {
+            if (balloon.growing) {
+                balloon.radius += 1; // Increase growth rate for larger balloon
+                if (balloon.radius > 150) balloon.growing = false; // New max size
+            } else {
+                balloon.radius -= 1;
+                if (balloon.radius < 50) balloon.growing = true; // Restart growing
+            }
+            drawBalloon();
+        }
+
+        // Start the simulation
+        function startSimulation() {
+            balloon.growing = true;
+            simulate();
+        }
+
+        // Reset the simulation
+        function resetSimulation() {
+            balloon.radius = 50;
+            drawBalloon();
+        }
+
+        // Animation loop
+        function simulate() {
+            updateBalloon();
+            requestAnimationFrame(simulate);
+        }
+
+        // Event listeners for buttons
+        document.getElementById('startButton').addEventListener('click', startSimulation);
+        document.getElementById('resetButton').addEventListener('click', resetSimulation);
+
+        // Initial drawing
+        drawBalloon();
+    </script>
+</body>
+</html>

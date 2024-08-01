@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap');
+::selection {
+    background-color: pink;
+}
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 100%; /* Make the scrollbar shorter */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    margin: auto 0; /* Add margin to the top and bottom to shorten the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #000000;
+}
+
+hr {
+    border: 1px solid #000000;
+    margin: 10px 0;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+body {
+    font-family: 'Host Grotesk', sans-serif;
+    margin-top: 120px; /* Move the body down by 100px */
+}
+
+header h1 {
+    font-weight: 1000;
+    font-size: 4em;
+    text-align: center;
+    margin: auto 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1); /* 60% opacity */
+    z-index: 1000;
+    padding: 50px 0; /* Make the background taller */
+    left: 0px; /* Extend the background to the left */
+    right: 0px; /* Extend the background to the right */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); /* Add a shadow to the header */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: fixed;
+    top: 120px; /* Adjust this value based on the height of the header */
+    width: 100%;
+    z-index: 999;
+    padding-bottom: 20px; /* Extend the background lower by 20px */
+    z-index: 1001;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 400;
+    color: #333;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+main section h2 {
+    font-weight: 700;
+    font-size: 2em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+main section h3 {
+    font-weight: 1000;
+    font-size: 2em;
+    margin-top: 0px;
+    text-align: left;
+}
+
+main section p {
+    font-weight: 400;
+    font-size: 1em;
+    margin: 10px 0;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.5;
+}
+
+main .p2 {
+    font-weight: 600;
+    font-size: 1.25em;
+    color: #000000;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+main .p3 {
+    font-weight: 400;
+    font-size: 0.9em;
+    margin: 10px 0;
+    color: #555;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1;
+}
+
+footer p {
+    color: #000000;
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.9em;
+    margin: auto 0;
+    padding: 20px 0;
+}
+
+.bullet-point {
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #8fc8f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+#text-block {
+    background-color: rgba(255, 255, 255, 0.80);
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+    top: 10px;
+}
+
+.collapsible-button {
+    background-color: rgba(173, 216, 230);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline;
+    float: right;
+    margin-right: -60px; /* Move it to the right a bit */
+    margin-top: -7px;
+}

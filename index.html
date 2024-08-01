@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<script src="main.js" defer></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+    
+    <header>
+        <h1>BALLOONIFY!</h1>
+    </header>
+
+    <!-- Animation for the header -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('scroll', function() {
+                const headerH1 = document.querySelector('header h1');
+                const scrollPosition = window.scrollY;
+                const maxLetterSpacing = 40; // Increased maximum letter spacing in pixels
+                const easingFactor = 0.05; // Easing factor to make the spacing ease out
+                const normalizedScroll = Math.min(scrollPosition / window.innerHeight, 1);
+                const letterSpacing = maxLetterSpacing * (1 - Math.pow(1 - normalizedScroll, 2));
+                headerH1.style.letterSpacing = `${letterSpacing}px`;
+            });
+        });
+    </script>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="#ABOUT">ABOUT</a></li>
+            <li><a href="#PLANS">PLANS</a></li>
+            <li><a href="#COMMUNITY">COMMUNITY</a></li>
+            <li><a href="#FAQ">FAQ</a></li>
+        </ul>
+        <br>
+    </nav>
+    <style>
+        nav ul li a {
+            transition: padding 0.3s ease;
+        }
+        nav ul li a:hover {
+            padding-left: 25px;
+            padding-right: 25px;
+            background-color: pink;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 40px;
+        }
+    </style>
+    <br>
+    <br>
+    <br>
+    <main>
+        <model-viewer
+        id="balloonViewer"
+        src="balloon-output.gltf"
+        poster="Tiles136C_1K-JPG_NormalGL.webp"
+        alt="Balloon"
+        style="width: 500px; height: 500px; background-color: rgba(173, 216, 230, 1); border-radius: 50%; display: block; margin: 0 auto; overflow-x: hidden;"
+        field-of-view="30deg"
+        disable-zoom 
+        auto-rotate
+        camera-orbit="0deg 32deg 35m"
+        camera-target="0m -1m 0m"
+        touch-action="pan-y"
+        environment-image="sunflowers_puresky_1k.hdr"
+        >
+        <effect-composer render-mode="quality">
+            <outline-effect color="blue" blend-mode="default"></outline-effect>
+            <!-- You can add other effects here if needed -->
+        </effect-composer>
+        </model-viewer>
+
+        <script>
+            const modelViewer = document.getElementById('balloonViewer');
+        
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const orbitX = 0 - (scrollY * 180 / window.innerHeight); // Adjust for a suitable range
+                
+                modelViewer.cameraOrbit = `${orbitX}deg 30deg 35m`;
+            });
+        </script>
+        
+
+        <section>
+            <br>
+            <h2>
+                No Mess, No Stress, Just Transform!
+            </h2>
+            <p>
+                Molding your old, worn-out rooms into stunning, modern spaces within hours. 
+            </p>
+        </section>
+        <br>
+        <br>
+        <br>
+        <section id="ABOUT">
+            <h2>ABOUT</h2>
+            <p><b><i>BALLOONIFY!</i></b> is an innovative home renovation solution developed by Columbia GSAPP's M.S.GPT and WXYZFPK Studio. <br><br>
+            <b><i>BALLOONIFY!</i></b> is compliant with the East Coast Federal Government's Adaptive Reuse Act and designed to meet the highest standards of structural integrity and safety. Widely used in numerous LEED Obsidian certified projects, our product ensures eco-friendly and efficient space transformations for modern living.</p>
+            <br>
+            <br>
+                <img src="top-2-01.png" style="width: 500px; height: auto; display: block; margin: 0 auto;">
+            <br>
+            <br>
+            <p class="p2">BALLOONIFY! your house</p>
+            <br>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <div style="text-align: center;">
+                    <img src="plan-1.png" style="width: 200px; height: auto; opacity: 0.6; transition: transform 0.3s ease, opacity 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.opacity='1';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='0.6';">
+                    <br>
+                    <p style="text-align: center; margin-top: 10px;">Brownville, NJ<br>- J. Michael</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="plan-2.png" style="width: 200px; height: auto; opacity: 0.6; transition: transform 0.3s ease, opacity 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.opacity='1';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='0.6';">
+                    <br>
+                    <p style="text-align: center; margin-top: 10px;">Grenwich Village, NY<br>- S. Thompson</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="plan-3.png" style="width: 200px; height: auto; opacity: 0.6; transition: transform 0.3s ease, opacity 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.opacity='1';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='0.6';">
+                    <br>
+                    <p style="text-align: center; margin-top: 10px;">Brookline, MA<br>- A. Hernandez</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="plan-4.png" style="width: 200px; height: auto; opacity: 0.6; transition: transform 0.3s ease, opacity 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'; this.style.opacity='1';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='0.6';">
+                    <br>
+                    <p style="text-align: center; margin-top: 10px;">Fairfax, VA<br>- L. Nguyen</p>
+                </div>
+            </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <p class="p2">BALLOONIFY! Manhattan</p>
+            <br>
+            <br>
+            <div style="display: flex; max-width: 800px; margin: 0 auto; justify-content: center;">
+                <div id="map" style="height: 500px; flex: 1; z-index: 1;"></div>
+                <div style="flex: 1; padding-left: 20px; text-align: left; max-width: 500px;">
+
+                        Explore the incredible impact of <b><i>BALLOONIFY!</i></b> on Manhattan with our interactive map, showcasing over 1,800 buildings transformed under the NY Housing Act for Building Reuse.
+                        <br><br>
+                        Each marked location represents a historic 21st-century building that has been revitalized into a beautiful, modern home!
+                        <br><br>
+                        Click on any building to see its unique style and transformation journey. Discover how iconic structures have been given new life while preserving their historic charm.</p>
+                </div>
+            </div>
+        
+
+        <!-- MAP -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var map = L.map('map', { minZoom: 11, maxBounds: [[40.5774, -74.1700], [40.9176, -73.7604]] }).setView([40.7598, -73.9700], 12); // Centered on New York City with bounds set to Manhattan
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    className: 'grayscale'
+                }).addTo(map);
+
+                $.getJSON("mn_landmark.geojson", function(data) {
+                    L.geoJson(data, {
+                        style: function (feature) {
+                            return { color: "#FFB6C1" }; // Light pink color
+                        },
+                        onEachFeature: function (feature, layer) {
+                            if (feature.properties && feature.properties.build_nme && feature.properties.style_prim) {
+                                layer.bindPopup("<b>Building Name:</b> " + feature.properties.build_nme + "<br><b>Style:</b> " + feature.properties.style_prim);
+                            }
+                        }
+                    }).addTo(map);
+                });
+            });
+        </script>
+        <br>
+        <br>
+        <br>
+            <p class="p2">Why Choose <i>BALLOONIFY!</i>?</p>
+            <br>
+            <div class="bullet-point">
+                <p class="p2" style="text-align: center;">✨ Instant Transformation:</p>
+                <p style="text-align: center;">Watch in awe as your room expands and reshapes, creating the perfect ambiance for any occasion.</p><br>
+            </div>
+            <br>
+            <div class="bullet-point">
+                <p class="p2">🌱 LEED-Certified:</p>
+                <p style="text-align: center;"> Our eco-conscious balloons are designed to minimize environmental impact while maximizing style.</p><br>
+            </div>
+            <br>
+            <div class="bullet-point">
+                <p class="p2">🎨 Customizable Designs:</p>
+                <p style="text-align: center;"> Choose from a variety of shapes, sizes, and colors to match your unique taste and decor.</p><br>
+            </div>
+            <br>
+            <div class="bullet-point">
+                <p class="p2">💡 Smart Technology:</p>
+                <p style="text-align: center;"> Integrated sensors and voice commands always ensure precise, effortless inflation.</p><br>
+            </div>
+            <br>
+            <div class="bullet-point">
+                <p class="p2">🚀 Pro & Deluxe Perks:</p>
+                <p style="text-align: center;">Unlock advanced features with our Pro & Deluxe packages, including real-time space optimization and exclusive design patterns.</p><br>
+            </div>
+            <br>
+            <div class="bullet-point">
+                <p class="p2">🔒 Safe & Secure:</p>
+                <p style="text-align: center;"> Equipped with safety locks and noise-free inflation, Inflate-A-Room guarantees a seamless and serene renovation process.</p><br>
+            </div>
+        </section>
+        <br>
+        <br>
+        <br>
+
+        <section id="PLANS">
+            <h2>PLANS</h2>
+            <div id="text-block">
+            <p class="p2">Flex</p>
+                <p style="text-align: center;">Perfect for occasional transformations. Enjoy basic inflation features and essential customization options to refresh your space as needed.</p>
+                <br>
+                <p class="p2">Pro</p>
+                <p style="text-align: center;">Step up your game with advanced features like Rapid Inflation, Weatherproof option, and enhanced safety. Ideal for frequent users who want more control and flexibility.</p>
+                <br>
+                <p class="p2">Deluxe</p>
+                <p style="text-align: center;">Experience the ultimate in space transformation. Unlock all premium features, including OpenApple's latest Aroma infusion and Multi-room sync. Perfect for those who want the best of everything <b><i>BALLOONIFY!</i></b> has to offer.</p><br>
+            </div>
+            <br>
+            <br>
+            <div style="display: flex; justify-content: center; gap: 0px;">
+                <div style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; text-align: left; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <p>Flex</p>
+                        <br>
+                        <h3 style="display: inline; text-align: left;">$1,000</h3><p style="display: inline; text-align: left;"> / month</p>
+                        <br>
+                        <br>
+                        <p><strong style="font-weight: 1000;">Includes</strong></p>
+                        <br>
+                        <p>&#10003; Free 3-month trial</p>
+                        <p>&#10003; Built-in power supply</p>
+                        <p>&#10003; Thermal regulation</p>
+                        <p>&#10003; Ambient lighting</p>
+                        <p>&#10003; Eco-inflate mode</p>
+                        <p>&#10003; 24/7 support</p>
+                    </div>
+                    <div style="margin-top: auto;">
+                        <br>
+                        <button>Get started</button>
+                    </div>
+                </div>
+
+                <div style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; text-align: left; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <p>Pro</p>
+                        <br>
+                        <h3 style="display: inline; text-align: left;">$3,000</h3><p style="display: inline; text-align: left;"> / month</p>
+                        <br>
+                        <br>
+                        <p><strong style="font-weight: 1000;">Everything in Flex, plus</strong></p>
+                        <br>
+                        <p>&#10003; Customization options</p>
+                        <p>&#10003; Rapid inflation</p>
+                        <p>&#10003; Weatherproof option</p>
+                        <p>&#10003; Advanced safety sensors</p>
+                        <p>&#10003; Modular add-ons</p>
+                    </div>
+                    <div style="margin-top: auto;">
+                        <br>
+                        <button>Get started</button>
+                    </div>
+                </div>
+
+                <div style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; text-align: left; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <p>Deluxe</p>
+                        <br>
+                        <h3 style="display: inline; text-align: left;">$4,500</h3><p style="display: inline; text-align: left;"> / month</p>
+                        <br>
+                        <br>
+                        <p><strong style="font-weight: 1000;">Everything in Pro, plus</strong></p>
+                        <br>
+                        <p>&#10003; Aroma infusion</p>
+                        <p>&#10003; Multi-room sync</p>
+                        <p>&#10003; Interactive projection</p>
+                        <p>&#10003; Voice-controlled ambiance</p>
+                    </div>
+                    <div style="margin-top: auto;">
+                        <br>
+                        <button>Get started</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <br>
+        <br>
+        <br>
+        <section id="COMMUNITY">
+            <h2>COMMUNITY</h2>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0px;">
+                
+                <div class="slideshow-container" style="display: flex; overflow: hidden; width: 100%;">
+                    <div class="slideshow" style="display: flex; animation: slide 20s infinite linear; flex-wrap: wrap;">
+                        <div class="review-box" style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; min-width: 300px; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);">
+                            <h2 style="text-align: center;">&#9733; &#9733; &#9733; &#9733; &#9733;</h2>
+                            <h3 style="text-align: center;">A Game-Changer for Home Makeovers!</h3><p style="text-align: center;">- Jessica R., Neo York</p>
+                            <br>
+                            <br>
+                            <p style="max-width: 320px;">I was skeptical at first, but Balloonify exceeded my expectations! The Rapid Inflation feature transformed my living room in minutes, and the Ambient Lighting created a cozy atmosphere instantly. It’s like having a personal renovation assistant at my disposal. Plus, the Eco-Inflate Mode is a nice touch for energy-conscious users. Highly recommended!</p>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="review-box" style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; min-width: 300px; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);">
+                            <h2 style="text-align: center;">&#9733; &#9733; &#9733; &#9733; &#9733;</h2>
+                            <h3 style="text-align: center;">Fun and Innovative, with a Few Quirks</h3><p style="text-align: center;">- Mike T., San Francesco</p>
+                            <br>
+                            <br>
+                            <p style="max-width: 320px;">Balloonify is an absolute blast! The Customization Options allowed me to match the balloon to my decor perfectly. The only downside was that the noise during inflation was a bit louder than I expected. However, the quick transformation and the interactive projection feature more than make up for it. Great for parties and special events!</p>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="review-box" style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; min-width: 300px; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);">
+                            <h2 style="text-align: center;">&#9733; &#9733; &#9733; &#9733; &#9733;</h2>
+                            <h3 style="text-align: center;">The Ultimate Solution for Last-Minute Guests!</h3><p style="text-align: center;">- Elena W., Shicago</p>
+                            <br>
+                            <br>
+                            <p style="max-width: 320px;">Balloonify saved me during a last-minute dinner party. The Weatherproof Option meant I could quickly inflate my patio area, and the Built-in Power Supply ensured that I didn’t have to worry about finding an outlet. My guests were amazed at the instant makeover. The smart home integration was seamless too. I’m hooked!</p>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="review-box" style="background-color: rgb(238, 238, 238); padding: 20px; border-radius: 10px; flex: 1; margin: 5px; min-width: 300px; max-width: 400px; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);">
+                            <h2 style="text-align: center;">&#9733; &#9733; &#9733; &#9733; &#9733;</h2>
+                            <h3 style="text-align: center;">Transformative and Structurally Sound!</h3><p style="text-align: center;">- John D., New Boston</p>
+                            <br>
+                            <br>
+                            <p style="max-width: 320px;">Balloonify completely changed my home renovation game. I used it to inflate a new study room, and the high structural integrity of the balloon made it feel like a permanent addition. The customization options allowed me to match the decor perfectly, and the Smart Home Integration made the whole process effortless. Even my architect was impressed with how compliant it is with the Adaptive Reuse Act. Highly recommend for anyone looking to improve their space quickly and safely!</p>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div id="text-block">
+                <p class="p2">Join the <i>BALLOONIFY!</i> Review Incentive Program!</p><br>
+                <p>Love <i>BALLOONIFY!</i>? Share your experience and get rewarded! Join our Review Incentive Program and earn points every time you leave a review. Your feedback helps us improve and brings you closer to unlocking exciting new product functions online!</p><br>
+            </div>
+            <br>
+            <div id="text-block">
+                <p class="p2">How it works:</p><br>
+                <p><b>Write a Review:</b> <br>Share your thoughts about <i>BALLOONIFY!</i> on our website or social media platforms.</p><br>
+                <p><b>Earn Points:</b> <br>Each review earns you points that accumulate in your <i>BALLOONIFY!</i> account.</p><br>
+                <p><b>Unlock Functions:</b> <br>Use your points to unlock exclusive online features, such as advanced customization options, enhanced safety settings, and more!</p><br>
+            </div>
+            <br>
+            <div id="text-block">
+                <p class="p2">Why join?</p><br>
+                <p><b>Exclusive Access:</b> <br>Be the first to try out new <i>BALLOONIFY!</i> functions before anyone else.</p><br>
+                <p><b>Enhanced Experience:</b> <br>Customize your <i>BALLOONIFY!</i> even further with premium features.</p><br>
+                <p><b>Community Impact:</b> <br>Help shape the future of <i>BALLOONIFY!</i> with your valuable feedback.</p><br>
+            </div>
+        </section>
+        <br>
+        <br>
+        <br>
+
+        <section id="FAQ">
+            <h2>FAQ</h2>
+            <div id="text-block">
+                <p style="padding: 10px 0;"><b>How does BALLOONIFY! work?</b> <button class="collapsible-button">+</button></p>
+                    <div class="collapsible-content" style="display: none;">
+                        <p><i>BALLOONIFY!</i> involves placing an inflating balloon inside a room. The balloon expands to reshape and renovate the space. It can be customized with various materials and colors and includes features like ambient lighting and smart home integration.
+                        </p>
+                    </div>
+            </div>
+            <br>
+            <div id="text-block">
+                <p style="padding: 10px 0;"><b>Is BALLOONIFY! safe to use?</b> <button class="collapsible-button">+</button></p>
+                    <div class="collapsible-content" style="display: none;">
+                        <p>Yes, <i>BALLOONIFY!</i> is designed with high safety standards. It complies with the US East Coast Federal Government's Adaptive Reuse Act and is used in many LEED Obsidian certified projects. It includes advanced safety sensors and a built-in power supply for secure and reliable operation.
+                        </p>
+                    </div>
+            </div>
+            <br>
+            <div id="text-block">
+                <p style="padding: 10px 0;"><b>Can BALLOONIFY! be used in historic buildings?</b> <button class="collapsible-button">+</button></p>
+                    <div class="collapsible-content" style="display: none;">
+                        <p>Yes, <i>BALLOONIFY!</i> is perfect for preserving and enhancing historic buildings. Our technology complies with the US East Coast Federal Government's Adaptive Reuse Act and the NY Housing Act for Building Reuse, ensuring that historic structures are treated with care while being transformed into modern, functional spaces. For more information on the US East Coast Federal Government's Adaptive Reuse Act or the NY Housing Act for Building Reuse, please contact your local government office or visit the official government website.
+                        </p>
+                    </div>
+            </div>
+            <br>
+            <div id="text-block">
+                <p style="padding: 10px 0;"><b>How do I maintain my BALLOONIFY! setup?</b> <button class="collapsible-button">+</button></p>
+                    <div class="collapsible-content" style="display: none;">
+                        <p>Regular maintenance is essential for the safe and effective operation of <i>BALLOONIFY!</i> We recommend inspecting the balloon periodically for any signs of wear or damage. Follow our maintenance guidelines provided with your subscription to ensure longevity and optimal performance. Failure to maintain the balloon properly may void the warranty.
+                        </p>
+                    </div>
+            </div>
+            <br>
+            <div id="text-block">
+                <p style="padding: 10px 0;"><b>What if I experience an inflation emergency?</b> <button class="collapsible-button">+</button></p>
+                    <div class="collapsible-content" style="display: none;">
+                        <p>In the event of an unexpected inflation emergency, follow the Emergency Deflation Protocol included in your <i>BALLOONIFY!</i> kit. Our 24/7 support team is also available to assist with any inflating or deflating needs. Ensure all occupants and pets are safely outside during the deflation process.
+                        </p>
+                    </div>
+            </div>
+
+        </section>
+        <br>
+        <br>
+        <br>
+        <br>
+        <section id="DISCLAIMERS">
+            <p class="p2" style="color: #555;">DISCLAIMERS</p>
+            <br>
+            <p class="p3"><strong>Structural Assessment Recommended:</strong> Prior to use, conduct a thorough assessment of your home's structural integrity to ensure suitability for inflation.
+            <strong></strong>Legal Disclaimer:</strong> This product may cause minor alterations to your home's structural integrity. Not responsible for inflation mishaps. Use responsibly.
+            <strong>Health & Safety Notice:</strong> Use at your own risk. Ensure all occupants and pets are safely outside during inflation.
+            <strong>Maintenance Requirement:</strong> Regular inspection and maintenance of the balloon are necessary to ensure safe and effective operation. Failure to do so may void warranty.
+            <strong>Warranty Extension:</strong> Extend your warranty for up to 5 years with our premium protection plan.
+            <strong>Emergency Deflation Protocol:</strong> In the event of an unexpected inflation emergency, follow the included safety guidelines to safely deflate and restore your space.
+            <strong>Power Surge Warning:</strong> Ensure your home’s electrical system can handle high power demands during rapid inflation. Overloading may lead to temporary outages.
+            <strong>Privacy Advisory:</strong> Inflated spaces may be visible from outside. Ensure proper measures are taken to maintain privacy during and after inflation.
+            <strong>Noise Disturbance Alert:</strong> Inflation and deflation processes may produce loud noises. Notify neighbors to avoid disturbances during use.
+            <strong>Environmental Impact Statement:</strong> While eco-friendly, improper disposal of deflated balloons may harm the environment. Follow local regulations for disposal.
+            <strong>Chemical Sensitivity Warning:</strong> Some materials used in the balloon may cause allergic reactions. Use in well-ventilated areas and avoid direct skin contact.
+            <strong>Medical Advisory:</strong> Individuals with respiratory issues should avoid staying in recently inflated spaces until they are well-ventilated.
+            <strong>User Accountability:</strong> By using this product, users agree to indemnify and hold the manufacturer harmless from any claims arising from improper use.</p>
+        </section>
+        <br>
+        <br>
+        <br>
+    </main>
+    <hr>
+    <br>
+    <br>
+    <footer>
+        <p>&copy; 2124 BALLOONIFY!</p>
+        <p>All Rights Reserved. This website and all its contents, including but not limited to text, graphics, images, software, and other materials, are the property of BALLOONIFY! and are protected by United East States and international copyright laws. Unauthorized reproduction, distribution, modification, or use of any content from this website is strictly prohibited. All trademarks, service marks, and trade names appearing on this website are the property of BALLOONIFY! or their respective owners. Any unauthorized use of the materials or intellectual property contained herein may result in legal action and penalties. For permissions or inquiries, please contact us directly.</p>
+    </footer>
+    <style>
+
+        
+    </style>
+    <div class="footer-background"></div>
+</body>
+</html>
